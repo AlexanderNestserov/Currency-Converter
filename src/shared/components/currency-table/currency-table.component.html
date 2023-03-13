@@ -1,0 +1,43 @@
+<div class="table__wrapper">
+<p-table *ngIf="allCurrencies?.length else emptyTable"
+         class="p-table"
+         [paginator]="true"
+         [rows]="10"
+         [value]="allCurrencies"
+         (onSort)="onSortChange($event)"
+         [customSort]="true">
+  <ng-template pTemplate="caption">
+    <div class="table-header">
+                <button pButton pRipple type="button" label="Clear" (click)="onClearSort()"
+                        icon="pi pi-filter-slash" class="p-button"></button>
+                 <p-calendar class="p-calendar"
+                             [formControl]="fromDate"
+                             dateFormat="yy-mm-dd"
+                             [showIcon]="true"
+                             appendTo="body"></p-calendar>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let header of labelHeaders"
+          [pSortableColumn]="header.value">
+        {{ header.label }}
+        <p-sortIcon *ngIf="header.value"
+                    class="p-table__sort-icon"
+                    [field]="header.value"></p-sortIcon>
+        <p-columnFilter type="text" [field]="header.value" display="menu" class="ml-auto"></p-columnFilter>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-currency class="p-table__body">
+    <tr>
+      <td>{{ currency.code }}</td>
+      <td>{{ currency.currency }}</td>
+      <td>{{ currency.mid }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+  <ng-template #emptyTable>
+    <div class="p-table-empty">There are no data...</div>
+  </ng-template>
+</div>
