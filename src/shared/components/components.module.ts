@@ -11,6 +11,7 @@ import {PaginatorModule} from "primeng/paginator";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ThemesComponent} from "./themes/themes.component";
 import {SelectButtonModule} from "primeng/selectbutton";
+import {SpinnerComponent} from "./spinner/spinner.component";
 
 const commonModules = [
   CommonModule,
@@ -29,6 +30,7 @@ const commonModules = [
 const commonDeclarations = [
   CurrencyTableComponent,
   ThemesComponent,
+  SpinnerComponent,
 ];
 
 @NgModule({

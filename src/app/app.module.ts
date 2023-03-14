@@ -2,10 +2,11 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {CurrencyService} from "../shared/services/currency.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ComponentsModule} from "../shared/components/components.module";
-import {ThemeService} from "../shared/services/theme.service";
+import {InterceptorsModule} from "../shared/interceptor/interceptor.module";
+import {DialogService} from "primeng/dynamicdialog";
+import {DialogsModule} from "../shared/dialogs/dialogs.module";
 
 @NgModule({
   declarations: [
@@ -16,8 +17,10 @@ import {ThemeService} from "../shared/services/theme.service";
     HttpClientModule,
     AppRoutingModule,
     ComponentsModule,
+    InterceptorsModule,
+    DialogsModule,
   ],
-  providers: [CurrencyService, ThemeService],
+  providers: [DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

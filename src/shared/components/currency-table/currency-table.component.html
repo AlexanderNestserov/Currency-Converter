@@ -2,7 +2,7 @@
 <p-table *ngIf="allCurrencies?.length else emptyTable"
          class="p-table"
          [paginator]="true"
-         [rows]="10"
+         [rows]="6"
          [value]="allCurrencies"
          (onSort)="onSortChange($event)"
          [customSort]="true">
@@ -19,13 +19,14 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let header of labelHeaders"
+      <th *ngFor="let header of labelHeaders; last as isLast; first as isFirst"
+          [class.first-last]="isFirst || isLast"
           [pSortableColumn]="header.value">
         {{ header.label }}
         <p-sortIcon *ngIf="header.value"
                     class="p-table__sort-icon"
                     [field]="header.value"></p-sortIcon>
-        <p-columnFilter type="text" [field]="header.value" display="menu" class="ml-auto"></p-columnFilter>
+        <p-columnFilter type="text" [field]="header.value" display="menu" class="p-table__filter-icon"></p-columnFilter>
       </th>
     </tr>
   </ng-template>

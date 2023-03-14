@@ -1,9 +1,8 @@
 <div class="themes__wrapper">
   <div class="themes__wrapper-text">Wybierz widok</div>
   <p-selectButton [options]="stateOptions"
-                  [(ngModel)]="value"
+                  [formControl]="value"
                   optionLabel="label"
-                  (onChange)="onChangeTheme($event)"
                   optionValue="value"></p-selectButton>
 </div>
 

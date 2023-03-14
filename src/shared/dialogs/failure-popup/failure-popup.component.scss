@@ -1,0 +1,40 @@
+.c-failure-popup {
+    padding: 24px;
+    min-width: 440px;
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    & > i {
+      cursor: pointer;
+    }
+  }
+  &__content {
+    &-oops {
+      font-weight: bold;
+      line-height: 150%;
+      letter-spacing: 0.03em;
+      font-size: 24px;
+      color: red;
+    }
+    width: 100%;
+    text-align: center;
+    &-text {
+      font-weight: bold;
+      line-height: 150%;
+      letter-spacing: 0.03em;
+      font-size: 20px;
+      color: black;
+      white-space: pre-line;
+    }
+  }
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    & > button {
+      width: 70px;
+    }
+  }
+}

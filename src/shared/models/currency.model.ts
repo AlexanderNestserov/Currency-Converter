@@ -11,3 +11,8 @@ export interface CurrencyData {
   table: string;
 }
 
+export interface ErrorMessage {
+  message: string;
+  value: boolean;
+}
+

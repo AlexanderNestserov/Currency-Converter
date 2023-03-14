@@ -1,0 +1,16 @@
+<div class="c-failure-popup">
+  <div class="c-failure-popup__header">
+    <i (click)="onClose(true)" class="pi pi-times"></i>
+  </div>
+  <div class="c-failure-popup__content">
+    <div class="c-failure-popup__content-oops">
+      {{ config.data.statusText }}
+    </div>
+    <div class="c-failure-popup__content-text">
+      {{ config.data.message }}
+    </div>
+  </div>
+  <div class="c-failure-popup__button">
+    <button pButton pRipple type="button" label="OK" class="p-button-danger" (click)="onClose(true)"></button>
+  </div>
+</div>

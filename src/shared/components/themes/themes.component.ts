@@ -1,5 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ThemeService} from "../../services/theme.service";
+import {FormBuilder} from "@angular/forms";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-themes',
@@ -7,22 +10,31 @@ import {ThemeService} from "../../services/theme.service";
   styleUrls: ['./themes.component.scss']
 })
 
-export class ThemesComponent {
+export class ThemesComponent implements OnInit, OnDestroy{
 
   public stateOptions: any[];
+  public value = this._fb.control('jasny');
 
-  public value: string = "saga-blue";
+  private _destroy$ = new Subject<void>();
 
   constructor(
+    private _fb: FormBuilder,
     private _themeService: ThemeService,
   ) {
     this.stateOptions = [
-      {label: 'Ciemny', value: 'md-dark-indigo'},
-      {label: 'Jasny', value: 'saga-blue'},
+      {label: 'Ciemny', value: 'ciemny'},
+      {label: 'Jasny', value: 'jasny'},
     ];
   }
 
-  public onChangeTheme(event: { originalEvent: PointerEvent, value: string }): void {
-    this._themeService.switchTheme(event.value);
+  public ngOnInit(): void {
+    this.value.valueChanges
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((el)=> this._themeService.contrast.next(el === 'jasny'));
+  }
+
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

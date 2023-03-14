@@ -1,0 +1,18 @@
+:root {
+  body {
+    --white: #fff;
+    --black: #495057;
+    --blackwhite: #495057;
+    --grey: #e9ecef;
+    --blacktext: #000;
+    --blue: #2196F3;
+  }
+  body[darktheme="true"] {
+    --white: #000;
+    --black: #000;
+    --blackwhite: #fff;
+    --grey: #fff;
+    --blacktext: #fff;
+    --blue: #fff;
+  }
+}
